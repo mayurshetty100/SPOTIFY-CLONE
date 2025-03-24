@@ -1,0 +1,1 @@
+/* Javascript is a programming language which is used to build logic for the websites */
