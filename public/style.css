@@ -1,355 +1,358 @@
-body{
+/* ADDED: A common reset to prevent padding/border issues */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
-    background-color:#000;
-    color:#fff;
-    overflow:hidden;/* if the content goes outside the window or the screen then it will not be visible and we cant even get it by scrolling also */
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
 }
 
-.main{
-    display:flex;
-    height:100vh;
-    padding:0.5rem;
+.main {
+    display: flex;
+    height: 100vh;
+    padding: 0.5rem;
 }
 
-.sidebar{
-    background-color:#000;/* we ge this from color picker */
-    width:340px;
-    border-radius:1rem; /* 16px */
-    margin-right:0.5rem;
+.sidebar {
+    background-color: #000;
+    width: 340px;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
-.main_content{
-    background-color:#121212;
-    flex:1;/* it means the remaining spaces after giving necessary spaces to all the other elements such as sidebar and music-player*/
-    border-radius:1rem;
-    overflow:auto;/* we only need the scrolling feature for this part of the spotify beacuse it has got the list of songs */
-    padding:0 1.5rem 0 1.5rem;
-}
-
-.music-player{
-    background-color:rgb(0, 0, 0);
-    position:fixed;
-    bottom:0px;
-    width:100%;
-    height:72px;
-}
-
-a{
-    text-decoration:none;
-    color:#fff;
-}
-
-.nav{
+.main_content {
     background-color: #121212;
-    border-radius:1rem;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    height:100px;/* we can get this value by inspecting the original spotify website */
-    padding:0.5rem 0.75rem;
+    flex: 1;
+    border-radius: 0.5rem;
+    overflow: auto;
+    padding: 0 1.5rem;
 }
 
-.nav-option{
-    line-height:2.5rem;
-    opacity:0.7;
-    padding:0.5rem 0.75rem;
+.music-player {
+    background-color: #000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.nav-option:hover{
-    opacity:1;
-}
-.nav-option i{
-    font-size:1.25rem;
+a {
+    text-decoration: none;
+    color: #fff;
 }
 
-.nav-option a{
-    font-size:1rem;
-    margin-left:1rem;
-}
-
-.library{
+.nav {
     background-color: #121212;
-    border-radius:1rem;
-    height:100%;
-    margin-top:0.5rem;
-    padding:0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+    padding: 0.5rem 0.75rem;
 }
 
-.options{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.nav-option {
+    line-height: 2.5rem;
+    opacity: 0.7;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s ease-in-out;
 }
 
-.lib-option img{
-    height:1.5rem;
-    width:1.25rem;
+.nav-option:hover {
+    opacity: 1;
 }
 
-.icons{
-    font-size:1.25rem;  
-    display:flex;
+.nav-option i {
+    font-size: 1.25rem;
 }
 
-.icons i{
-    opacity:0.7;
-    margin-right:1rem;
+.nav-option a {
+    font-size: 1rem;
+    margin-left: 1rem;
 }
 
-.icons i:hover{
-    opacity:1;
+.library {
+    background-color: #121212;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    flex-grow: 1; /* ADDED: This makes the library take up all available space */
+    overflow: auto; /* ADDED: Allows scrolling if content overflows */
 }
 
-.box{
-   background-color:#232323;
-    height:8rem;
-    border-radius:0.75rem;
-    margin:0.75rem 0 0.75rem 0;
-    padding:0.5rem 1rem;
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.box-p1{
-    font-size:1rem;
-    font-weight:500;
+.lib-option img {
+    height: 1.25rem;
+    width: 1.25rem;
 }
 
-.box-p2{
-    font-size:0.85rem;
-    opacity:0.9;
+.icons {
+    font-size: 1.25rem;
+    display: flex;
+    gap: 1rem; /* ADDED: Better spacing than margin */
 }
 
-.badge{
-    background-color:#fff;
-    border:none;
-    border-radius:100px;
-    padding:0.25rem 1rem;
-    font-weight:700;
-    color:black;
-    margin:0.5rem;
-    height:2rem;
-    width:fit-content;
+.icons i {
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
 }
 
-.sticky-nav{
-    position:sticky;
-    top:0;
-    background-color:#121212;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding-top:1rem 0 1rem 0;
-    z-index:10;
+.icons i:hover {
+    opacity: 1;
 }
 
-.sticky-nav-icons img{
- height:2rem;
- width:2rem;
- margin-left:0.75rem;
+.box {
+    background-color: #232323;
+    border-radius: 0.75rem;
+    margin: 1rem 0;
+    padding: 1rem 1.25rem;
 }
 
-.sticky-nav-options{
-    display:flex;
+.box-p1 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.box-p2 {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-top: 0.75rem;
+}
+
+.badge {
+    background-color: #fff;
+    border: none;
+    border-radius: 100px;
+    padding: 0.25rem 1rem;
+    font-weight: 700;
+    color: black;
+    margin-top: 1rem;
+    height: 2rem;
+    width: fit-content;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.badge:hover {
+    transform: scale(1.05);
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    z-index: 10;
+}
+
+.sticky-nav-icons img {
+    height: 2rem;
+    width: 2rem;
+    margin-left: 0.75rem;
+}
+
+.sticky-nav-options {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.nav-item{
-    margin-right:1rem;
-}
-.dark-badge{
-    background-color: #fff;
-    color:#000;
-}
-.dark-badge i{
-    margin-right:0.4rem;
+.nav-item {
+    margin-right: 1rem;
 }
 
-@media (max-width:1000px){
-    .hide{
-        display:none;
+.dark-badge {
+    background-color: black;
+    color: #fff;
+}
+
+@media (max-width: 1000px) {
+    .hide {
+        display: none;
     }
 }
 
-.card{
-    background-color:#121212;
-    width:150px;
-    border-radius:0.5rem;
-    padding:1rem;
-    margin-left:1.5rem;
-    margin-top:1rem;
+.card {
+    background-color: #181818;
+    width: 180px; /* Increased size slightly */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem;
+    transition: background-color 0.2s ease-in-out;
 }
 
-.card:hover{
-    background-color:#232323;
+.card:hover {
+    background-color: #282828;
 }
 
-.card-container{
-    display:flex;
-    flex-wrap:wrap;
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1rem; /* Counteract card margin */
 }
 
-.song-cards{
-    justify-content: space-between;
-}
-.card-img{
-    width:100%;
-    border-radius:0.5rem;
+.card-img {
+    width: 100%;
+    border-radius: 0.5rem;
 }
 
-.card-title{
-  font-weight:600;
+.card-title {
+    font-weight: 600;
+    margin-top: 0.75rem;
 }
 
-.card-info{
-    font-size:0.85rem;
-    opacity:0.5;
+.card-info {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 0.25rem;
 }
 
-.new-card{
-    opacity:0;
-    text-align:center;
-    padding-top:8rem;
-}
-
-.new-card:hover{
-    opacity:0.7;
-    color:#575050;
-    font-style:italic;
-}
-
-.featured div{
-    margin-right:2rem;
-}
-
-.footer{
-    height:300px;
-    display:flex;
-    align-items:center;
+.footer {
+    height: 300px;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.line{
-    width:90%;
-    height:50%;
-    border-top:1px solid white;
-    opacity:0.4l
+.line {
+    width: 90%;
+    height: 50%;
+    border-top: 1px solid white;
+    opacity: 0.4; /* FIX: Corrected typo '0.4l' */
 }
 
-.music-player{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+/* --- Music Player Styles --- */
+.album {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
+    gap: 1rem;
 }
 
-.player-controls{
-    display:flex;
-    justify-content:center;
-    align-items:center;   
+.album img {
+    height: 3.5rem; /* Tweak: Make it a square */
+    width: 3.5rem;
+    border-radius: 4px;
+    object-fit: cover; /* Tweak: Prevents image stretching */
 }
 
-
-.player{
-    width:50%;
+.album-content {
+    line-height: 1.4;
+}
+.song-title {
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
-.player-control-icon{
-    height:1rem;
-    margin-right:2rem;
-    opacity:0.5;
+.song-artist {
+    opacity: 0.7;
+    font-size: 0.75rem;
 }
 
-.sec{
-    opacity:0.7
+.album-icons i {
+    cursor: pointer;
+    margin: 0 0.5rem;
 }
 
-.player-control-icon:hover{
-    opacity:1;
+.player {
+    width: 50%;
 }
 
-.progress-bar{
-    width:70%;
-    /* appearance property controls the UI of the element based on the operating system in which we are opening it 
-    by setting it to null we can remove those default styles and apply our own styles for that element*/
-    appearance:none;
-    background-color:transparent;
-    cursor:pointer;
-    /* we can study the document "quirksmode.org" for leaarning on how to style sliders in css */
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem; /* Tweak: Use gap for spacing */
 }
 
-.progress-bar::-webkit-slider-runnable-track{
-    background-color:#ddd;
-    border-radius:100px;
-    height:0.2rem;
+.player-control-icon {
+    height: 1rem;
+    opacity: 0.7;
+    transition: all 0.2s;
+    cursor: pointer;
 }
 
-.progress-bar::-webkit-slider-thumb{
+.player-control-icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.play-btn {
+    height: 2rem;
+    opacity: 1;
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+}
+
+.playback-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.progress-bar {
+    width: 70%;
     appearance: none;
-    height:1rem;
-    width:1rem;
-    background-color:#1bd760;
-    border-radius:50%;
-    margin-top:-6px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
-.album{
-    width:25%;
-    padding:1rem;
-    justify-content:space-between;
-    align-items:center;
-    display:flex;
-     margin-right:1rem;
+.progress-bar::-webkit-slider-runnable-track {
+    background-color: #4d4d4d;
+    border-radius: 100px;
+    height: 0.25rem;
 }
 
-.album img{
-    height:3rem;
-    width:6rem;
-    border-radius:10%;
-    justify-content:center;
-    margin-top:2rem;
-}
-.album-content{
-    display:inline-block;
-    opacity:1;
-    font-size:1.2rem;
-    margin-left:0.6rem;
-    margin-top:1rem;
-}
-.album-content p{
-    opacity:0.7;
-    font-size:0.8rem;
-    padding-bottom:1rem;
+.progress-bar::-webkit-slider-thumb {
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    background-color: #1bd760;
+    border-radius: 50%;
+    margin-top: -6px;
 }
 
-.album-content p:hover{
-    opacity:1;
-}
-.album-icons{
-    margin-right:2rem;
-}
-.album-icons i{
-    padding-right:0.8rem;
-    font-size:1.5rem;
-}
-.album-left{
-    padding-right:4rem;
-    justify-content:center;
+.controls {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
+.controls i {
+    opacity: 0.7;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
 
-.control{
-    width:25%;
-    margin-left:2rem;
-}
-.control i{
-    padding:1rem;
-    font-size:1.5rem;
-    padding:1.5rem;
-    opacity:0.7;
-}
-.control i:hover{
-    opacity:1;
-    font-size:1.8rem;
+.controls i:hover {
+    opacity: 1;
 }
