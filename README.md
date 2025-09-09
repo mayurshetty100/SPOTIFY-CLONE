@@ -5,11 +5,6 @@ Frontend Sonata
 <p style="font-size: 1.5em; font-style: italic; font-family: 'Montserrat', sans-serif;">
 A Spotify UI Tribute 🎵
 </p>
-
-<br>
-
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2RtaXpxaWd6Z3F5c3Z2a2g4b281dGFtZ21icjUwbTh4MjgzNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L1R1tvI9svkIWwp203/giphy.gif" alt="Spotify Clone Animated Demo" width="80%">
-
 </div>
 
 The Overture
